@@ -7,9 +7,29 @@ class Matrix
     const ERR_ROW_EMPTY = 3;
     const ERR_ROW_LENGTH_DIFFERS = 4;
     const ERR_NOT_A_NUMBER = 5;
+    const ERR_NOT_MULTIPLIABLE = 6;
     public static function multiply(array a, array b) -> array {
-        var ret;
+        var ret, aDimensions, bDimensions;
         let ret = [];
+        let aDimensions = self::getDimensions(a);
+        let bDimensions = self::getDimensions(b);
+        if aDimensions[1] != bDimensions[0] {
+            throw new \InvalidArgumentException("The number of columns on matrix A is not the same as the number of rows of matrix B", Matrix::ERR_NOT_MULTIPLIABLE);
+        }
+        var i, aRow;
+        for i, aRow in a {
+            var j;
+            let j = 0;
+            while j < bDimensions[1] {
+                var k, ij, aCell;
+                let ij = 0;
+                for k, aCell in aRow {
+                    let ij += aCell * b[k][j];
+                }
+                let ret[i][j] = ij;
+                let j += 1;
+            }
+        }
         return ret;
     }
     // @param int[][] input
