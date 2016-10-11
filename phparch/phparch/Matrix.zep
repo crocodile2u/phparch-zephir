@@ -1,0 +1,2 @@
+namespace Phparch;
+class Matrix {}
