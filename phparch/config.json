@@ -54,9 +54,9 @@
     },
     "namespace": "phparch",
     "name": "phparch",
-    "description": "",
-    "author": "",
-    "version": "0.0.1",
+    "description": "Matrix example for a PHP|Architect article",
+    "author": "Victor Bolshov",
+    "version": "0.1",
     "verbose": false,
     "requires": {
         "extensions": []
